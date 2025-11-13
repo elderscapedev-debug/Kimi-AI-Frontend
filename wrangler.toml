@@ -1,0 +1,37 @@
+name = "kimi-k2-sentinel"
+account_id = "6872653edcee9c787c1b783173793"
+main = "src/index.ts"
+compatibility_date = "2025-10-11"
+workers_dev = true
+
+[site]
+bucket = "./dist"
+
+[vars]
+HF_REPO = "unsloth/Kimi-K2-Instruct-GGUF"
+FIREWORKS_API_KEY = "key_56q8wCxbBaVjawry" # Your Fireworks AI API Key
+USE_CLOUDFLARE_AI = "true" # Set to "true" to enable Cloudflare Workers AI
+CLOUDFLARE_AI_MODEL = "@cf/meta/llama-3-8b-instruct" # Example model ID
+HUGGINGFACE_API_KEY = "pick-of-gods_huggingface_default" # Your Hugging Face API Key
+OPENROUTER_API_KEY = "pick-of-gods_openrouter_default" # Your OpenRouter API Key
+
+[[kv_namespaces]] # Changed to array
+binding = "CACHE"
+id = "YOUR_KV_NAMESPACE_ID" # Replace with your actual KV Namespace ID
+
+[durable_objects]
+bindings = [
+  { name = "KIMISESSION", class_name = "KimiSessionDO" }
+]
+
+[[migrations]] # Added migrations section
+tag = "v1"
+new_classes = [ "KimiSessionDO" ]
+
+[ai]
+binding = "AI" # Required for Cloudflare Workers AI
+
+[observability]
+enabled = true # Simplified observability
+# logs = { enabled = true } # Can be added if more granular control is needed
+# traces = { enabled = true }

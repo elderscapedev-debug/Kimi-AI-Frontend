@@ -1,4 +1,4 @@
-name = "kimi-k2-sentinel"
+name = "kimi-ai-dev"
 account_id = "6872653edcee9c787c1b783173793"
 main = "src/index.ts"
 compatibility_date = "2025-10-11"
